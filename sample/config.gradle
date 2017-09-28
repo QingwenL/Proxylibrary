@@ -20,13 +20,12 @@ ext {
     // APP 包名
     APPLICATION_ID = 'com.app.sample'
 
-
     // 引用第三方库版本
     //appcompat-v7
     APPCOMPAT_VERSION = '25.1.0'
     //support-v4
     SUPPORT_VERSION = '25.1.0'
 
-
-
+    // Material Dialogs
+    MATERIAL_DIALOGS_VERSION = '0.8.6.2'
 }

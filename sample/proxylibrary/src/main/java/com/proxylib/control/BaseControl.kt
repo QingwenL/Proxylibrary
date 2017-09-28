@@ -51,8 +51,8 @@ open class BaseControl(private  var  mp: MessageProxy)  {
      * @param method 方法
      * @param bundle 参数
      */
-    fun callMethod(method:String, bundle: Bundle){
-        mp.callMethod(method,bundle)
+    fun callMethod(method:String,any: Any){
+        mp.callMethod(method,any)
     }
 
 

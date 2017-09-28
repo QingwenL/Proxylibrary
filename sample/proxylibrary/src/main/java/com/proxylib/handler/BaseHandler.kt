@@ -3,6 +3,7 @@ package com.commonlib.lib.handler
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
+import android.util.Log
 import java.lang.ref.WeakReference
 import java.lang.reflect.Method
 /**
@@ -47,7 +48,7 @@ open abstract  class BaseHandler<R : Any>(var r: R) : Handler() , IContext<R>  {
             method = mClass.getMethod(msg.obj.toString())
             method.isAccessible = true // 提高反射速度
             method.invoke(r)
-        }catch (e:Exception){
+        }catch (e:Exception){ // 直接跑出异常
             throw  RuntimeException("Reflex failed")
         }
     }
@@ -59,15 +60,18 @@ open abstract  class BaseHandler<R : Any>(var r: R) : Handler() , IContext<R>  {
      * @param msg 参数
      */
     private   fun  invoke(r : R, msg: Message){
-        val mClass: Class<out R> = r::class.java //r.javaClass.kotlin
-        val bundle:Bundle = msg.data
-        val method:Method
+        var mClass: Class<out R> = r::class.java //r.javaClass.kotlin
+        var bundle:Bundle = msg.data
+        var method:Method
+        var any:Any
         try{
-            method = mClass.getMethod(msg.obj.toString(),bundle.javaClass)
+            any = bundle.getSerializable("name")
+            method = mClass.getMethod(msg.obj.toString(),any.javaClass)
             method.isAccessible = true // 提高反射速度
-            method.invoke(r,bundle)
+            method.invoke(r,any)
       }catch (e:Exception){ // 直接跑出异常
-            throw  RuntimeException("Reflex failed")
+            e.printStackTrace()
+//            throw  RuntimeException("Reflex failed")
       }
     }
 

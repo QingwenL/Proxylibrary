@@ -14,7 +14,7 @@ class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         // 初始化LeakCanary
-        LeakCanary.install(this)
+        LeakCanary.install(this) // 检测内存泄露
         Proxylibrary.init(this)
     }
 

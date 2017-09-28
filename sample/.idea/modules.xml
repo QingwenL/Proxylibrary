@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Example.iml" filepath="$PROJECT_DIR$/Example.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/proxylibrary/proxylibrary.iml" filepath="$PROJECT_DIR$/proxylibrary/proxylibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sample.iml" filepath="$PROJECT_DIR$/sample.iml" />
     </modules>
   </component>
 </project>
