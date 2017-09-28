@@ -2,6 +2,7 @@ package com.commonlib.lib.handler
 
 import android.os.Bundle
 import android.os.Message
+import java.io.Serializable
 
 
 /**
@@ -33,11 +34,13 @@ class MessageProxy(private  var mBaseHandler: BaseHandler<*>){
      * @param method 方法
      * @param bundle 参数
      */
-    fun callMethod(method:String, bundle: Bundle){
+    fun callMethod(method:String, any: Any){
         var ms  = mBaseHandler.obtainMessage()
+        var b = Bundle()
         ms.what = What.REFLEX
         ms.obj  = method
-        ms.data = bundle
+        b.putSerializable("name",any as Serializable)
+        ms.data = b
         mBaseHandler.sendMessage(ms)
     }
 
